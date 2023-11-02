@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://p532ar07v8hw"]
+
+[ext_resource type="Script" path="res://script/gamerscrip.gd" id="1_em4jf"]
+[ext_resource type="PackedScene" uid="uid://j5rmv4s1co74" path="res://player.tscn" id="2_u8ont"]
+[ext_resource type="PackedScene" uid="uid://cuyjb2iimqxr4" path="res://enemy.tscn" id="3_ycrff"]
+[ext_resource type="PackedScene" uid="uid://bhpdmv2basrwp" path="res://second_enemy.tscn" id="4_r5uvf"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_em4jf")
+enemy_scenes = Array[PackedScene]([ExtResource("3_ycrff"), ExtResource("4_r5uvf")])
+
+[node name="Player" parent="." instance=ExtResource("2_u8ont")]
+position = Vector2(311, 790)
+scale = Vector2(0.7, 0.7)
+
+[node name="PlayerSpawnPos" type="Marker2D" parent="."]
+position = Vector2(275, 774)
+
+[node name="LazerContainer" type="Node2D" parent="."]
+
+[node name="EnemyContainer" type="Node2D" parent="."]
+
+[node name="EnemySpawnTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]

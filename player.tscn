@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://j5rmv4s1co74"]
+
+[ext_resource type="Script" path="res://script/player_Script.gd" id="1_het65"]
+[ext_resource type="Texture2D" uid="uid://qjdpw8vqf08l" path="res://ship.png" id="1_oxwam"]
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_mask = 2
+motion_mode = 1
+script = ExtResource("1_het65")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(116.5, 158.028)
+scale = Vector2(3.61111, 3.61111)
+texture = ExtResource("1_oxwam")
+region_enabled = true
+region_rect = Rect2(32, 0, 16, 24)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(114, 114, 121, 114, 129, 117, 140, 130, 145, 136, 144, 167, 139, 168, 131, 161, 134, 167, 135, 185, 116, 200, 98, 185, 100, 166, 103, 161, 92, 169, 88, 165, 88, 138, 99, 123, 106, 118)
+
+[node name="muzzle" type="Marker2D" parent="."]
+position = Vector2(-56, -50)
