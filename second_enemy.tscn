@@ -7,13 +7,16 @@
 size = Vector2(79, 42)
 
 [node name="second_Enemy" instance=ExtResource("1_tcsgd")]
-speed = 400
+speed = 300
 hp = 1
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_x6dl6")
 region_rect = Rect2(0, 0, 31, 16)
 
+[node name="muzzle" parent="Sprite2D" index="0"]
+position = Vector2(-118, -60)
+scale = Vector2(1, 1)
+
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(11.5, 14)
 shape = SubResource("RectangleShape2D_sqknl")

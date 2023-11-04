@@ -10,17 +10,16 @@ script = ExtResource("1_em4jf")
 enemy_scenes = Array[PackedScene]([ExtResource("3_ycrff"), ExtResource("4_r5uvf")])
 
 [node name="Player" parent="." instance=ExtResource("2_u8ont")]
-position = Vector2(311, 790)
-scale = Vector2(0.7, 0.7)
 
 [node name="PlayerSpawnPos" type="Marker2D" parent="."]
-position = Vector2(275, 774)
+position = Vector2(640, 480)
 
 [node name="LazerContainer" type="Node2D" parent="."]
 
 [node name="EnemyContainer" type="Node2D" parent="."]
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
+wait_time = 1.5
 autostart = true
 
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]

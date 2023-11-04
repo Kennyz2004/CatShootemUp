@@ -4,8 +4,10 @@ class_name  Player extends CharacterBody2D
 signal laser_shot(laser_scene, location) #signal is emmited when func shoot is made
 
 @export var SPEED = 300.0
+@export var hp = 5
 @export var rate_of_fire := 0.1 
-@onready var muzzle= $muzzle
+@onready var muzzle= $Sprite2D/muzzle
+
 
 #cooldown for holding the shoot button
 var shoot_cd:= false
@@ -38,6 +40,11 @@ func shoot():
 	#preload the scene and will go to gamerscrip.gd to play function
 	#look at connect in ready
 	laser_shot.emit(laser_scene, muzzle.global_position)
-
+	
+func take_dmg(amount):
+	hp -= amount
+	if hp <= 0:
+		die()
+		
 func die():
 	queue_free()
