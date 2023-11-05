@@ -1,11 +1,14 @@
 class_name Enemy extends Area2D
 
+signal killed(points)
+
 #check collision layers and how they work also check 29:50 of the video for a guide
 #go to inspector to change the hp and spedd of enemy
 @export var speed: int
 @export var hp: int
 @onready var laser_container = $EnemyLaserContainer
 @onready var muzzle = $Sprite2D/muzzle
+@export var points= 100
 
 
 var laser_scene = preload('res://laser.tscn')
@@ -37,12 +40,17 @@ func die():
 #to kill player
 func _on_body_entered(body):
 	if body is Player:
-		body.take_dmg(0)
-		take_dmg(0)
+		body.die()
+		die()
+		#Kens note: is this for having multple lives?
+		#body.take_dmg(0)
+		#take_dmg(0)
 		
 func take_dmg(amount):
 	hp -= amount
 	if hp <= 0:
+		#points are now added
+		killed.emit(points)
 		die()
 		
 func _on_visible_on_screen_enabler_2d_screen_exited():

@@ -2,6 +2,7 @@ class_name  Player extends CharacterBody2D
 
 #takes in a scene and location 
 signal laser_shot(laser_scene, location) #signal is emmited when func shoot is made
+signal killed
 
 @export var SPEED = 300.0
 @export var hp = 5
@@ -36,6 +37,9 @@ func _physics_process(delta):
 	velocity= direction * SPEED
 	move_and_slide()
 	
+	#clamping the player movement to be only on the screen
+	global_position= global_position.clamp(Vector2.ZERO, get_viewport_rect().size)
+	
 func shoot():
 	#preload the scene and will go to gamerscrip.gd to play function
 	#look at connect in ready
@@ -47,4 +51,6 @@ func take_dmg(amount):
 		die()
 		
 func die():
+	#go to game on reday to find signal connect 
+	killed.emit()
 	queue_free()
