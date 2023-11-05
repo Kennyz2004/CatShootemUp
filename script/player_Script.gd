@@ -3,6 +3,7 @@ class_name Player extends CharacterBody2D
 #takes in a scene and location 
 signal laser_shot(laser_scene, location) #signal is emmited when func shoot is made
 signal killed
+signal hp_update(hp)
 
 @export var SPEED = 300.0
 @export var hp: int
@@ -18,6 +19,9 @@ var laser_scene= preload('res://laser.tscn')
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+func _ready():
+	hp_update.emit(hp)
+	
 #action of the shooting (left click)
 func _process(delta):
 	#keep checking while pressed
@@ -46,6 +50,7 @@ func shoot():
 	
 func take_dmg(amount):
 	hp -= amount
+	hp_update.emit(hp)
 	if hp <= 0:
 		die()
 		

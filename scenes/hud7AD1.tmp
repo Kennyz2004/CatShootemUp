@@ -37,10 +37,9 @@ z_index = 1
 layout_mode = 0
 offset_left = 1050.0
 offset_top = 638.0
-offset_right = 1050.0
+offset_right = 1242.0
 offset_bottom = 702.0
 texture = ExtResource("3_88ua0")
-expand_mode = 1
 stretch_mode = 1
 
 [node name="DeadHearts" type="TextureRect" parent="."]

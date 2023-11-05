@@ -1,20 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhpdmv2basrwp"]
+[gd_scene load_steps=2 format=3 uid="uid://bhpdmv2basrwp"]
 
 [ext_resource type="PackedScene" uid="uid://cuyjb2iimqxr4" path="res://enemy.tscn" id="1_tcsgd"]
-[ext_resource type="Texture2D" uid="uid://bgopuefgsmg6j" path="res://enemy-medium.png" id="2_x6dl6"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sqknl"]
-size = Vector2(79, 42)
 
 [node name="second_Enemy" instance=ExtResource("1_tcsgd")]
-speed = 400
+speed = 200
 hp = 1
 points = 200
-rate_of_fire = 0.5
 
 [node name="Sprite2D" parent="." index="0"]
-texture = ExtResource("2_x6dl6")
-region_rect = Rect2(0, 0, 31, 16)
-
-[node name="CollisionShape2D" parent="." index="1"]
-shape = SubResource("RectangleShape2D_sqknl")
+region_rect = Rect2(0, 0, 64, 64)

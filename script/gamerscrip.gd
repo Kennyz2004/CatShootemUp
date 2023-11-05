@@ -50,10 +50,10 @@ func _process(delta):
 	elif Input.is_action_just_pressed("RESET"):
 		get_tree().reload_current_scene()
 	
-	if Input.is_action_pressed("SPEED"):
-		player.SPEED = 600.0
-	if Input.is_action_just_released("SPEED"):
-		player.SPEED = 300.0
+	if Input.is_action_pressed("SPEED") && player != null:
+		player.SPEED = 600.0            
+	if Input.is_action_just_released("SPEED") && player != null:
+		player.SPEED = 300.0 
 		
 	#increase difficulty
 	if timer.wait_time < 0.5:

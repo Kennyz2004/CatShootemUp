@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cktpjfh8flm1k"
-path="res://.godot/imported/enemy-small.png-3ac037276663f360569c87c5f23817ec.ctex"
+uid="uid://05fgm86vn3o"
+path="res://.godot/imported/pizzaEnemy.png-60ca28a6811cc03fd4285f72586f0014.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemy-small.png"
-dest_files=["res://.godot/imported/enemy-small.png-3ac037276663f360569c87c5f23817ec.ctex"]
+source_file="res://pizzaEnemy.png"
+dest_files=["res://.godot/imported/pizzaEnemy.png-60ca28a6811cc03fd4285f72586f0014.ctex"]
 
 [params]
 

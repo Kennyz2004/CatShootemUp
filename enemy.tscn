@@ -1,10 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cuyjb2iimqxr4"]
+[gd_scene load_steps=3 format=3 uid="uid://cuyjb2iimqxr4"]
 
-[ext_resource type="Texture2D" uid="uid://cktpjfh8flm1k" path="res://enemy-small.png" id="1_6rvk6"]
 [ext_resource type="Script" path="res://script/enemy_script.gd" id="1_mswn2"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_5ravl"]
-radius = 23.0217
+[ext_resource type="Texture2D" uid="uid://05fgm86vn3o" path="res://pizzaEnemy.png" id="2_ir8rv"]
 
 [node name="Enemy" type="Area2D"]
 scale = Vector2(1.25, 1.25)
@@ -12,25 +9,26 @@ collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_mswn2")
 speed = 100
-hp = 4
-rate_of_fire = 0.35
+hp = 2
+rate_of_fire = 1.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2.5625, 2.5625)
-texture = ExtResource("1_6rvk6")
+texture = ExtResource("2_ir8rv")
 region_enabled = true
-region_rect = Rect2(16, 0, 16, 16)
+region_rect = Rect2(64, 0, 64, 64)
 
 [node name="muzzle" type="Marker2D" parent="Sprite2D"]
-position = Vector2(0, 40)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_5ravl")
+position = Vector2(0, 32)
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
-position = Vector2(0, 30)
+position = Vector2(0, 32)
 
 [node name="EnemyLaserContainer" type="Node2D" parent="."]
+visible = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(1, 1)
+polygon = PackedVector2Array(-10.4, -10.4, -7.2, -16.8, 0, -25.6, 8, -16, 8.8, -13.6, 11.2, -11.2, 12, -8, 15.2, 0, 16.8, 1.6, 16.8, 7.2, 17.6, 8, 19.2, 11.2, 20, 15.2, 20.8, 17.6, 18.4, 20, 15.2, 20, -15.2, 20, -19.2, 19.2, -20.8, 16, -19.2, 12, -16.8, 6.4, -16.8, 1.6, -14.4, -2.4, -12, -7.2)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]
