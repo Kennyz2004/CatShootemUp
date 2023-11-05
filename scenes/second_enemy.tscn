@@ -1,11 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://bhpdmv2basrwp"]
+[gd_scene load_steps=3 format=3 uid="uid://bhpdmv2basrwp"]
 
 [ext_resource type="PackedScene" uid="uid://cuyjb2iimqxr4" path="res://scenes/enemy.tscn" id="1_cg5bu"]
 
+[sub_resource type="Gradient" id="Gradient_j468q"]
+offsets = PackedFloat32Array(0, 0.940397, 1)
+colors = PackedColorArray(0.985848, 0, 0.126093, 1, 0.992157, 0.447059, 0, 1, 1, 1, 1, 1)
+
 [node name="second_Enemy" instance=ExtResource("1_cg5bu")]
-speed = 200
+speed = Vector2(0, 250)
 hp = 1
 points = 200
+rate_of_fire = 0.75
 
 [node name="Sprite2D" parent="." index="0"]
 region_rect = Rect2(0, 0, 64, 64)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." index="3"]
+position = Vector2(0, -30)
+rotation = 3.14159
+lifetime = 0.5
+emission_shape = 2
+emission_sphere_radius = 3.0
+spread = 180.0
+gravity = Vector2(0, -200)
+damping_max = 1.0
+scale_amount_max = 3.0
+color = Color(0.968627, 0.168627, 0, 1)
+color_ramp = SubResource("Gradient_j468q")
+hue_variation_min = 1.0
+hue_variation_max = 1.0

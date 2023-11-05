@@ -1,10 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://j5rmv4s1co74"]
+[gd_scene load_steps=10 format=3 uid="uid://j5rmv4s1co74"]
 
 [ext_resource type="Script" path="res://script/player_Script.gd" id="1_het65"]
 [ext_resource type="Texture2D" uid="uid://dbt47wqasc2g4" path="res://catrocket.png" id="2_5ln0w"]
-[ext_resource type="AudioStream" uid="uid://drqpwcdamgvj" path="res://explosion.mp3" id="3_2l0j7"]
-[ext_resource type="Texture2D" uid="uid://d2fenhxc052y1" path="res://kaboom.png" id="3_6vtnl"]
-[ext_resource type="AudioStream" uid="uid://7qdss7hrl5b5" path="res://rocket-shoot.mp3" id="5_6133t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hxy12"]
 atlas = ExtResource("2_5ln0w")
@@ -52,67 +49,6 @@ animations = [{
 "loop": true,
 "name": &"hurt",
 "speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"new_animation",
-"speed": 5.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vcso7"]
-atlas = ExtResource("3_6vtnl")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_si1w3"]
-atlas = ExtResource("3_6vtnl")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hef7h"]
-atlas = ExtResource("3_6vtnl")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8t5jp"]
-atlas = ExtResource("3_6vtnl")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_3a4k7"]
-animations = [{
-"frames": [],
-"loop": false,
-"name": &"1",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vcso7")
-}],
-"loop": false,
-"name": &"2",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"3",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"4",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_si1w3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hef7h")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8t5jp")
-}],
-"loop": false,
-"name": &"death",
-"speed": 6.0
 }]
 
 [sub_resource type="Gradient" id="Gradient_q32aw"]
@@ -124,16 +60,10 @@ motion_mode = 1
 script = ExtResource("1_het65")
 hp = 3
 
-[node name="PChar" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_yvkeu")
 
-[node name="Explosion" type="AnimatedSprite2D" parent="PChar"]
-show_behind_parent = true
-scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_3a4k7")
-animation = &"1"
-
-[node name="muzzle" type="Marker2D" parent="PChar"]
+[node name="muzzle" type="Marker2D" parent="AnimatedSprite2D"]
 position = Vector2(0, -45)
 scale = Vector2(0.999999, 0.999999)
 
@@ -153,10 +83,3 @@ color = Color(0.968627, 0.168627, 0, 1)
 color_ramp = SubResource("Gradient_q32aw")
 hue_variation_min = 1.0
 hue_variation_max = 1.0
-
-[node name="Explosion" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_2l0j7")
-
-[node name="RocketBullet" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_6133t")
-volume_db = -5.0

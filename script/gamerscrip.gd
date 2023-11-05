@@ -13,7 +13,7 @@ extends Node2D
 var player = null #no player
 var score := 0:
 	set(value):
-		score= value
+		score = value
 		hud.score= score
 var high_score
 
@@ -27,21 +27,19 @@ func _ready():
 		high_score=0 
 		save_game()
 		
+	get_tree().paused = false
+	
 	score=0
 	player = get_tree().get_first_node_in_group("player") # find player
 	assert(player!=null) #insert error if player is not found
 	player.global_position = player_spawn_pos.global_position
 	player.laser_shot.connect(_on_player_laser_shot)
-	var e = enemy_scenes[1].instantiate()
-	e.global_position = Vector2(640, 100)
-	enemy_container.add_child(e)
 	player.killed.connect(_on_player_killed)
 	
 func save_game():
 	#save game hight score to user file
 	var save_File = FileAccess.open('user://save.data', FileAccess.WRITE)
 	save_File.store_32(high_score)
-	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -63,13 +61,16 @@ func _process(delta):
 
 func _on_player_laser_shot(laser_scene, location):
 	var laser = laser_scene.instantiate()
+	laser.player = true
 	laser.global_position =  location
 	lazer_container.add_child(laser)
 
 func _on_enemy_laser_shot(laser_scene, location):
 	var laser = laser_scene.instantiate()
+	laser.player = false
 	laser.global_position = location
-	laser.speed = -500
+	laser.speed = -500	
+	laser.get_node("AnimatedSprite2D").set_flip_v(true)
 	lazer_container.add_child(laser)
 	
 #spawning a new enemy
@@ -78,6 +79,7 @@ func _on_enemy_spawn_timer_timeout():
 	var e = enemy_scenes.pick_random().instantiate()
 	#change enemy spawn vertical change param of rand if
 	e.global_position= Vector2(randf_range(50,1150), -30)
+#	e.global_position= Vector2(randf_range(640,640), -30) # just for testing idk
 	e.killed.connect(_on_enemy_killed)
 	e.laser_shot.connect(_on_enemy_laser_shot)
 	enemy_container.add_child(e) 
@@ -91,6 +93,7 @@ func _on_player_killed():
 	gos.set_score(score)
 	gos.set_high_score(high_score)
 	save_game()
+	get_tree().paused = true
 	await get_tree().create_timer(1).timeout
 	gos.visible = true
 	

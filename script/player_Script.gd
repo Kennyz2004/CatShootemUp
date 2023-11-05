@@ -8,7 +8,12 @@ signal hp_update(hp)
 @export var SPEED = 300.0
 @export var hp: int
 @export var rate_of_fire: float = 0.2 
-@onready var muzzle= $AnimatedSprite2D/muzzle
+@onready var muzzle= $PChar/muzzle
+@onready var animation = $PChar
+@onready var explodeAnim = $PChar/Explosion
+@onready var explosionsound = $Explosion
+@onready var bulletsound = $RocketBullet
+
 
 #cooldown for holding the shoot button
 var shoot_cd:= false
@@ -18,6 +23,8 @@ var laser_scene= preload('res://scenes/laser.tscn')
 
 func _ready():
 	hp_update.emit(hp)
+	explodeAnim.play("default")
+	animation.play("default")
 	
 #action of the shooting (left click)
 func _process(delta):
@@ -31,11 +38,16 @@ func _process(delta):
 			#shoot
 			shoot_cd= false
 			
-			
 func _physics_process(delta):
 	var direction = Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down"))
 	velocity= direction * SPEED
-	move_and_slide()
+	move_and_slide()	
+	if(rotation >= -0.60 && rotation <= 0.60):
+		rotation += direction.x * delta
+	elif(rotation > -0.7 && rotation < -0.6 && direction.x > 0):
+		rotation += direction.x * delta
+	elif(rotation < 0.7 && rotation > 0.6 && direction.x < 0):
+		rotation += direction.x * delta
 	
 	#clamping the player movement to be only on the screen
 	global_position= global_position.clamp(Vector2.ZERO, get_viewport_rect().size)
@@ -44,11 +56,16 @@ func shoot():
 	#preload the scene and will go to gamerscrip.gd to play function
 	#look at connect in ready
 	laser_shot.emit(laser_scene, muzzle.global_position)
+	bulletsound.play()
 	
 func take_dmg(amount):
+	explosionsound.play()
+	animation.play("hurt")
 	hp -= amount
 	hp_update.emit(hp)
 	if hp <= 0:
+		explodeAnim.play("death")
+		await get_tree().create_timer(0.5).timeout
 		die()
 		
 func die():
