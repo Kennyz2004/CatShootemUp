@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpv3v3bp30bi6"]
+[gd_scene load_steps=4 format=3 uid="uid://cks1iwf0btfnc"]
 
 [ext_resource type="Script" path="res://script/hud.gd" id="1_ey8m8"]
 [ext_resource type="FontFile" uid="uid://b6laqgrt63kcg" path="res://Kenney Future Square.ttf" id="2_g5e7g"]

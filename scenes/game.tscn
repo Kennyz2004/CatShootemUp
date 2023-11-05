@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://script/gamerscrip.gd" id="1_em4jf"]
 [ext_resource type="PackedScene" uid="uid://j5rmv4s1co74" path="res://player.tscn" id="2_u8ont"]
 [ext_resource type="PackedScene" uid="uid://cuyjb2iimqxr4" path="res://enemy.tscn" id="3_ycrff"]
-[ext_resource type="PackedScene" uid="uid://cpv3v3bp30bi6" path="res://scenes/hud.tscn" id="4_ov5hl"]
+[ext_resource type="PackedScene" uid="uid://cks1iwf0btfnc" path="res://scenes/hud.tscn" id="4_ov5hl"]
 [ext_resource type="PackedScene" uid="uid://bhpdmv2basrwp" path="res://second_enemy.tscn" id="4_r5uvf"]
 [ext_resource type="Texture2D" uid="uid://c04h6fkuhhh3y" path="res://spritesheet.png" id="5_dwchl"]
-[ext_resource type="PackedScene" uid="uid://bb1cki86d17eb" path="res://scenes/game_over_screen.tscn" id="5_th4ol"]
+[ext_resource type="PackedScene" path="res://scenes/game_over_screen.tscn" id="5_th4ol"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_md3wq"]
 texture = ExtResource("5_dwchl")

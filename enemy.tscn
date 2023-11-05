@@ -13,6 +13,7 @@ collision_mask = 5
 script = ExtResource("1_mswn2")
 speed = 100
 hp = 4
+rate_of_fire = 0.35
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(2.5625, 2.5625)
@@ -27,7 +28,7 @@ position = Vector2(0, 40)
 shape = SubResource("CircleShape2D_5ravl")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
-position = Vector2(0, 100)
+position = Vector2(0, 30)
 
 [node name="EnemyLaserContainer" type="Node2D" parent="."]
 

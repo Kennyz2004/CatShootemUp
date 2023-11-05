@@ -10,6 +10,7 @@ size = Vector2(79, 42)
 speed = 400
 hp = 1
 points = 200
+rate_of_fire = 0.5
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_x6dl6")

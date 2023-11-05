@@ -50,6 +50,11 @@ func _process(delta):
 	elif Input.is_action_just_pressed("RESET"):
 		get_tree().reload_current_scene()
 	
+	if Input.is_action_pressed("SPEED"):
+		player.SPEED = 600.0
+	if Input.is_action_just_released("SPEED"):
+		player.SPEED = 300.0
+		
 	#increase difficulty
 	if timer.wait_time < 0.5:
 		timer.wait_time -= delta*0.05
@@ -61,6 +66,12 @@ func _on_player_laser_shot(laser_scene, location):
 	laser.global_position =  location
 	lazer_container.add_child(laser)
 
+func _on_enemy_laser_shot(laser_scene, location):
+	var laser = laser_scene.instantiate()
+	laser.global_position = location
+	laser.speed = -500
+	lazer_container.add_child(laser)
+	
 #spawning a new enemy
 func _on_enemy_spawn_timer_timeout():
 	#create a new enemy instance
@@ -68,6 +79,7 @@ func _on_enemy_spawn_timer_timeout():
 	#change enemy spawn vertical change param of rand if
 	e.global_position= Vector2(randf_range(50,1150), -30)
 	e.killed.connect(_on_enemy_killed)
+	e.laser_shot.connect(_on_enemy_laser_shot)
 	enemy_container.add_child(e) 
 
 func _on_enemy_killed(points):

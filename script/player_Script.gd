@@ -1,14 +1,13 @@
-class_name  Player extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 #takes in a scene and location 
 signal laser_shot(laser_scene, location) #signal is emmited when func shoot is made
 signal killed
 
 @export var SPEED = 300.0
-@export var hp = 5
-@export var rate_of_fire := 0.1 
+@export var hp: int
+@export var rate_of_fire: float = 0.2 
 @onready var muzzle= $Sprite2D/muzzle
-
 
 #cooldown for holding the shoot button
 var shoot_cd:= false
