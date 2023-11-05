@@ -18,6 +18,7 @@ func _physics_process(delta):
 func shoot():
 	var laser = laser_scene.instantiate()
 	laser.speed = -300
+	laser.sprite2D.set_flip_v(true)
 	laser.global_position = muzzle.position
 	laser_container.add_child(laser)
 	
@@ -28,8 +29,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_pressed("shoot"):
-		shoot()
 	pass
 	
 func die():

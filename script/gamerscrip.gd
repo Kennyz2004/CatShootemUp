@@ -37,7 +37,7 @@ func _on_enemy_spawn_timer_timeout():
 	#create a new enemy instance
 	var e = enemy_scenes.pick_random().instantiate()
 	#change enemy spawn vertical change param of rand if
-	e.global_position= Vector2(randf_range(50,1150), 30)
+	e.global_position= Vector2(randf_range(50,1150), -30)
 	enemy_container.add_child(e) 
 
 

@@ -15,7 +15,7 @@ region_enabled = true
 region_rect = Rect2(32, 0, 16, 24)
 
 [node name="muzzle" type="Marker2D" parent="Sprite2D"]
-position = Vector2(-40, -50)
+position = Vector2(0, -15)
 scale = Vector2(0.333333, 0.333333)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

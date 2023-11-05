@@ -21,13 +21,13 @@ region_enabled = true
 region_rect = Rect2(16, 0, 16, 16)
 
 [node name="muzzle" type="Marker2D" parent="Sprite2D"]
-position = Vector2(-118, -60)
+position = Vector2(0, 40)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_5ravl")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
-position = Vector2(0, -24)
+position = Vector2(0, 100)
 
 [node name="EnemyLaserContainer" type="Node2D" parent="."]
 
