@@ -8,16 +8,13 @@ signal hp_update(hp)
 @export var SPEED = 300.0
 @export var hp: int
 @export var rate_of_fire: float = 0.2 
-@onready var muzzle= $Sprite2D/muzzle
+@onready var muzzle= $AnimatedSprite2D/muzzle
 
 #cooldown for holding the shoot button
 var shoot_cd:= false
 
 # when action to shoot laser is pressed this variable makes an instand of laser (with moving upward animation)
-var laser_scene= preload('res://laser.tscn')
-
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var laser_scene= preload('res://scenes/laser.tscn')
 
 func _ready():
 	hp_update.emit(hp)

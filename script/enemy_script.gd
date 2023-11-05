@@ -13,7 +13,7 @@ signal laser_shot(laser_scene, location)
 @export var rate_of_fire: float
 
 
-var laser_scene = preload('res://laser.tscn')
+var laser_scene = preload('res://scenes/laser.tscn')
 
 #going down
 func _physics_process(delta):

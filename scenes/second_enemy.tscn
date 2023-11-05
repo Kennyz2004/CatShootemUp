@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://bhpdmv2basrwp"]
 
-[ext_resource type="PackedScene" uid="uid://cuyjb2iimqxr4" path="res://enemy.tscn" id="1_tcsgd"]
+[ext_resource type="PackedScene" uid="uid://cuyjb2iimqxr4" path="res://scenes/enemy.tscn" id="1_cg5bu"]
 
-[node name="second_Enemy" instance=ExtResource("1_tcsgd")]
+[node name="second_Enemy" instance=ExtResource("1_cg5bu")]
 speed = 200
 hp = 1
 points = 200

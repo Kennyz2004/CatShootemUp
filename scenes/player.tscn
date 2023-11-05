@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://j5rmv4s1co74"]
+
+[ext_resource type="Script" path="res://script/player_Script.gd" id="1_het65"]
+[ext_resource type="Texture2D" uid="uid://dbt47wqasc2g4" path="res://catrocket.png" id="2_5ln0w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxy12"]
+atlas = ExtResource("2_5ln0w")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m352e"]
+atlas = ExtResource("2_5ln0w")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y624q"]
+atlas = ExtResource("2_5ln0w")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3x2k"]
+atlas = ExtResource("2_5ln0w")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hllsa"]
+atlas = ExtResource("2_5ln0w")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yvkeu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxy12")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m352e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y624q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3x2k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hllsa")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+motion_mode = 1
+script = ExtResource("1_het65")
+hp = 3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_yvkeu")
+
+[node name="muzzle" type="Marker2D" parent="AnimatedSprite2D"]
+position = Vector2(0, -45)
+scale = Vector2(0.999999, 0.999999)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, -30, -8, -23, -8, -21, -9, -19, -9, -17, -10, -16, -10, -6, -12, -5, -15, -5, -16, -4, -17, -4, -17, -3, -19, -3, -20, -2, -21, -2, -23, -1, -25, 1, -26, 5, -26, 8, -27, 8, -27, 16, -26, 17, -23, 20, -22, 21, -21, 19, -23, 17, -23, 15, -22, 14, -22, 12, -17, 8, -13, 5, -10, 7, -10, 12, -9, 14, -7, 16, 6, 16, 10, 12, 10, 11, 10, 7, 11, 6, 14, 6, 17, 8, 20, 10, 22, 12, 22, 15, 23, 16, 23, 18, 21, 19, 23, 21, 26, 18, 26, 17, 27, 15, 27, 8, 26, 8, 26, 4, 25, 4, 25, 1, 15, -5, 12, -5, 10, -7, 10, -16, 9, -19, 8, -21, 8, -23)
